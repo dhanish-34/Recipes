@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Order Food Online</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500');
+        @import url('C:\Users\Laptop\Downloads\New folder\Assets\Fonts\Metropolis');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        body{
+            
+            background-size: auto;
+        }
+        .container
+        {
+            padding-top: 10px;
+            padding-left: 50px;
+        }
+        .card-body{
+            font-family: 'Poppins', sans-serif;
+        }
+        .card{
+            height:81vh;
+            background: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+        }
+        .card-img-top{
+            padding: 15px 15px 15px 15px;
+            width: 100%;
+            height: 40vh;
+            object-fit: fill;
+        }
+        .topc{
+            padding: 10px 10px 10px 10px;
+            height:15vh;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            font-weight: 900;
+            color: white;
+            background-size: fit
+        }
+        body{
+            background-image: 'http://sfwallpaper.com/images/food-wallpaper-4.jpg';
+        }
+        .logo
+        {
+            margin-left: auto;
+            margin-right:auto;
+            display: block;
+        }
+        .card.vi
+        {
+            
+            bottom: 0px;
+        }
+    </style>
+    
+</head>
+<body style='background: url(https://i.pinimg.com/originals/76/89/c5/7689c5513084cd3ae199cec4f9b84af3.jpg)'>
+        <div class="jumbotron-fluid">
+                <img class="logo" src="https://dcassetcdn.com/design_img/10150/1674/1674_291296_10150_image.jpg" height="200" width="500">
+        </div>
+        <div class="container">
+            <div ng-app="myApp" ng-controller="myCtrl"> 
+                <div class="row">  
+                    <div class="col-sm-4"  ng-repeat="x in myWelcome">
+                        <div class="card">
+                            <img class="card-img-top" src="{{x.image}}" alt="Card image cap">
+                                <article class="card-body">
+                                    <h5 class="card-title">{{x.name}}</h5>
+                                        <div>{{x.description}}</div>
+                                            <div><b><label>{{x.price}}</label><div id="p16"></div></b></div>
+                                            <br>
+                                        <div class="viewbut"><a href="1.html" class="btn btn-primary">View!</a></div>
+                                </article>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>    
+        <footer class="page-footer font-white pt-4" style="font-family: 'Poppins', sans-serif">
+            <div class="footer-copyright text-center py-3" style="color: white"> 2020 Copyright: Dhanish Ahmed
+        </div>
+        </footer>
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl',function($scope, $http) {
+                $http.get("http://starlord.hackerearth.com/recipe")
+                .then(function(response) {
+                    //var info=JSON.parse(JSON.stringify(response));
+                    $scope.myWelcome = response.data;
+                });
+            });
+        </script>    
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" ></script>
+</body>
+</html>
